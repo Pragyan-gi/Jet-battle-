@@ -1,0 +1,259 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+:root {
+  --bg: #080b1a;
+  --panel: #11172b;
+  --cyan: #41f6ff;
+  --pink: #ff4d91;
+  --yellow: #ffe66d;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 18px 10px;
+  background:
+    radial-gradient(ellipse at top, #20204a 0%, transparent 55%),
+    var(--bg);
+  color: white;
+  font-family: 'Press Start 2P', monospace;
+}
+
+.game-container {
+  width: min(100%, 520px);
+  padding: 12px;
+  background: var(--panel);
+  border: 3px solid #383e68;
+  border-radius: 12px;
+  box-shadow: 0 0 35px #41f6ff19, inset 0 0 20px #0008;
+}
+
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 4px 16px;
+  flex-wrap: wrap;
+}
+
+.logo {
+  color: var(--cyan);
+  font-size: 12px;
+  text-shadow: 0 0 12px #41f6ff88;
+}
+
+.status {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  font-size: 8px;
+  line-height: 2;
+}
+
+.status b {
+  display: block;
+  color: var(--yellow);
+  margin-top: 4px;
+}
+
+#lives {
+  color: var(--pink);
+  letter-spacing: 4px;
+}
+
+.screen {
+  position: relative;
+  width: 100%;
+  border: 3px solid #343b63;
+  background: #080d20;
+  overflow: hidden;
+}
+
+canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+  image-rendering: pixelated;
+  touch-action: none;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+  background: #070b1ad9;
+  text-align: center;
+}
+
+.overlay.hidden {
+  display: none;
+}
+
+.panel {
+  width: 100%;
+  max-width: 350px;
+  padding: 20px 10px;
+}
+
+.eyebrow {
+  color: var(--yellow);
+  font-size: 8px;
+  line-height: 2;
+}
+
+h1 {
+  color: var(--cyan);
+  font-size: clamp(25px, 7vw, 39px);
+  line-height: 1.6;
+  text-shadow: 4px 4px 0 #fa4280;
+  margin: 24px 0;
+}
+
+#overlayText {
+  font-size: 9px;
+  line-height: 2.4;
+  color: #d4d9ff;
+  margin-bottom: 26px;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  touch-action: none;
+  user-select: none;
+}
+
+#startBtn {
+  width: 100%;
+  padding: 17px 8px;
+  background: var(--yellow);
+  color: #11172b;
+  border: 0;
+  font-size: 11px;
+  box-shadow: 0 5px 0 #a88d31;
+}
+
+#startBtn:active {
+  transform: translateY(3px);
+  box-shadow: 0 2px 0 #a88d31;
+}
+
+.small {
+  font-size: 7px;
+  color: #939dbf;
+  line-height: 2;
+  margin-top: 24px;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 18px 2px 8px;
+}
+
+.move-controls {
+  display: grid;
+  grid-template-columns: repeat(3, 48px);
+  grid-template-rows: repeat(2, 42px);
+  gap: 5px;
+}
+
+.control-btn {
+  background: #222b4b;
+  color: var(--cyan);
+  border: 2px solid #49577d;
+  border-radius: 7px;
+  font-size: 17px;
+  box-shadow: 0 3px 0 #11172b;
+}
+
+.control-btn[data-key="up"] {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.control-btn[data-key="left"] {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.control-btn[data-key="down"] {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.control-btn[data-key="right"] {
+  grid-column: 3;
+  grid-row: 2;
+}
+
+.control-btn:active,
+.control-btn.pressed {
+  background: var(--cyan);
+  color: #080b1a;
+}
+
+.fire-btn {
+  min-width: 105px;
+  height: 68px;
+  background: var(--pink);
+  color: white;
+  border: 2px solid #ff9abd;
+  border-radius: 8px;
+  font-size: 10px;
+  box-shadow: 0 5px 0 #8e2850;
+}
+
+.fire-btn:active,
+.fire-btn.pressed {
+  transform: translateY(3px);
+  box-shadow: 0 2px 0 #8e2850;
+}
+
+.help {
+  text-align: center;
+  color: #7883a8;
+  font-size: 7px;
+  line-height: 2.3;
+  margin: 14px 0 5px;
+}
+
+@media (max-width: 380px) {
+  .game-container {
+    padding: 7px;
+  }
+
+  .logo {
+    font-size: 10px;
+  }
+
+  .status {
+    font-size: 7px;
+  }
+
+  .move-controls {
+    grid-template-columns: repeat(3, 40px);
+    grid-template-rows: repeat(2, 38px);
+  }
+
+  .fire-btn {
+    min-width: 82px;
+    height: 62px;
+    font-size: 9px;
+  }
+}
