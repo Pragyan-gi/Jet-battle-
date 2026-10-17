@@ -1,0 +1,52 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SKY STRIKER - Arcade Game</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="game-container">
+    <header class="top-bar">
+      <div class="logo">✦ SKY STRIKER</div>
+      <div class="status">
+        <span>SCORE <b id="score">00000</b></span>
+        <span>LIVES <b id="lives">♥♥♥</b></span>
+      </div>
+    </header>
+
+    <section class="screen">
+      <canvas id="gameCanvas" width="480" height="640"></canvas>
+
+      <div id="overlay" class="overlay">
+        <div class="panel">
+          <p class="eyebrow">★ CLASSIC ARCADE ★</p>
+          <h1 id="overlayTitle">SKY<br />STRIKER</h1>
+          <p id="overlayText">
+            Take to the skies.<br />
+            Defeat enemy squadrons!
+          </p>
+          <button id="startBtn">▶ START GAME</button>
+          <p class="small">PRESS SPACE OR TAP TO FIRE</p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="controls">
+      <div class="move-controls">
+        <button class="control-btn" data-key="left" aria-label="Move left">◀</button>
+        <button class="control-btn" data-key="down" aria-label="Move down">▼</button>
+        <button class="control-btn" data-key="up" aria-label="Move up">▲</button>
+        <button class="control-btn" data-key="right" aria-label="Move right">▶</button>
+      </div>
+      <button id="fireBtn" class="fire-btn">✹ FIRE</button>
+    </footer>
+
+    <p class="help">KEYBOARD: WASD / ARROWS · SPACE: SHOOT</p>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
